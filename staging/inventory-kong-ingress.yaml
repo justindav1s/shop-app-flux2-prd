@@ -5,13 +5,15 @@ metadata:
   name: inventory-kong-ingress
   annotations:
     kubernetes.io/ingress.class: kong
+    konghq.com/override: inventory-kongingress
+    configuration.konghq.com: inventory-kongingress
   namespace: team2-staging
 spec:
   rules:
     - host: kong-staging.istio.dev1.eks.openshiftlabs.net
       http:
         paths:
-          - path: /products/*
+          - path: /products
             pathType: Prefix
             backend:
               service:
