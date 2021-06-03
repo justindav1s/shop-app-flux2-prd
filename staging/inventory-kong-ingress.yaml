@@ -18,3 +18,14 @@ spec:
                 name: inventory
                 port:
                   number: 8080
+
+---
+apiVersion: configuration.konghq.com/v1
+kind: KongIngress
+metadata:
+  name: inventory-kongingress
+  namespace: team2-staging
+route:
+  preserve_host: false
+upstream:
+  host_header: inventory.team2-staging.svc                   
