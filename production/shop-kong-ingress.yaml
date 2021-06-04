@@ -1,0 +1,33 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: shop-kong-ingress
+  annotations:
+    kubernetes.io/ingress.class: kong
+    konghq.com/override: shop-kongingress
+    configuration.konghq.com: shop-kongingress
+  namespace: team2-prd
+spec:
+  rules:
+    - host: kong-prd.istio.dev1.eks.openshiftlabs.net
+      http:
+        paths:
+          - path: /amazin
+            pathType: Prefix
+            backend:
+              service:
+                name: shop
+                port:
+                  number: 8080
+
+---
+apiVersion: configuration.konghq.com/v1
+kind: KongIngress
+metadata:
+  name: shop-kongingress
+  namespace: team2-prd
+route:
+  preserve_host: false
+upstream:
+  host_header: shop.team2-prd.svc 
