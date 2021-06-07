@@ -20,7 +20,7 @@ spec:
     platform: ocp
     versionlabel: v2
     applabel: flux
-    image_reg: quay.io/justindav1s
+    image_reg: 005459661421.dkr.ecr.eu-west-2.amazonaws.com
     image_name: inventory
     image_tag: latest
     containerport: 8080
